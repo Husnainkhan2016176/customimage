@@ -2,7 +2,7 @@ FROM centos
 
 MAINTAINER tanjorekhan@gmail.com
 
-RUN yum -y intall httpd
+RUN yum -y install httpd
 
 COPY index.html /var/www/html
 
