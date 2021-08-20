@@ -1,0 +1,22 @@
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "<TASK_DEFINITION>"
+        LoadBalancerInfo: 
+          ContainerName: "gg" 
+          ContainerPort: 80
+# Optional properties
+        PlatformVersion: "1.4.0"
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-e72046be","subnet-05d87363","subnet-71934839"] 
+            SecurityGroups: ["sg-058e90db0d615d39d"] 
+            AssignPublicIp: "ENABLED"
+        CapacityProviderStrategy:
+          - Base: 0
+            CapacityProvider: "FARGATE"
+            Weight: 1
+          - Base: 1
+            CapacityProvider: "FARGATE_SPOT"
+            Weight: 5
